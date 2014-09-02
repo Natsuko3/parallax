@@ -6,14 +6,38 @@
 	<title>パラパラアニメ</title>
 </head>
 <body>
+
 <h1>テスト</h1>
 
-<div id="ani001" data-0="background-position:0px 100px;"></div>
+<div id="MVimg">
+	<p><img src="img/dummy1.png" height="768" width="1024" alt=""></p>
+	<p><img src="img/dummy2.png" height="768" width="1024" alt=""></p>
+	<p><img src="img/dummy3.png" height="768" width="1024" alt=""></p>
+	<p><img src="img/dummy4.png" height="768" width="1024" alt=""></p>
+	<p><img src="img/dummy5.png" height="768" width="1024" alt=""></p>
+<!--MVimg--></div>
 
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/skrollr.min.js"></script>
 <!--script type="text/javascript">
-	var s = skrollr.init()；
+$(document).ready(function(){
+
+	//#MovieContents内スクロール初期化
+	$('#MovieContents').scrollTop(0,0);
+	//#MovieContentsをスクロールでfunction実行
+	$('#MovieContents').scroll(function(){
+		//#MovieContentsからのスクロール距離
+		var MH = -400 * Math.floor(($(this).scrollTop() / 40));
+		if( MH >= -292800){
+		$('#MVimg').css({"margin-top": MH});
+		}else if( MH <= -292800 && MH >= -300000){
+		$('#MVimg').css({"margin-top": "-292800px"});
+		}else if( MH <= -300000 ){
+		//全て再生後に初期化。ループに入る
+		$('#MovieContents').scrollTop(0,0);
+		}
+	});
+});
 </script-->
 </body>
 </html>
